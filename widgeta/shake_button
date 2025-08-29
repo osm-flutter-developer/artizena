@@ -1,0 +1,125 @@
+
+import 'package:flutter/material.dart';
+
+
+class ShakeHorizontalButton extends StatefulWidget {
+  final Widget child;
+  final void Function() onPressed;
+  final bool canShake;
+
+  const ShakeHorizontalButton({super.key,
+    required this.child,
+    required this.onPressed,
+    required this.canShake,
+  });
+
+  @override
+  State<ShakeHorizontalButton> createState() => _ShakeHorizontalButtonState();
+
+}
+
+class _ShakeHorizontalButtonState extends State<ShakeHorizontalButton> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
+    _animation = TweenSequence([
+      TweenSequenceItem(tween: Tween(begin: 0.0, end: -8.0), weight: 1),
+      TweenSequenceItem(tween: Tween(begin: -8.0, end: 8.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 8.0, end: -8.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: -8.0, end: 8.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 8.0, end: 0.0), weight: 1),
+    ]).animate(CurvedAnimation(parent: _animationController, curve: Curves.linear));
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        widget.onPressed();
+        if(!widget.canShake) _animationController.forward(from: 0);
+      },
+      child: AnimatedBuilder(
+        animation: _animationController,
+        builder: (_, child) {
+          return Transform.translate(
+            offset: Offset(_animation.value, 0),
+            child: widget.child,
+          );
+        },
+      ),
+    );
+  }
+
+}
+
+
+class ScaleButton extends StatefulWidget {
+  final Widget child;
+  final void Function() onPressed;
+  final bool canScale;
+
+  const ScaleButton({super.key,
+    required this.child,
+    required this.onPressed,
+    required this.canScale,
+  });
+
+  @override
+  State<ScaleButton> createState() => _ScaleButtonState();
+}
+
+class _ScaleButtonState extends State<ScaleButton> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
+    _animation = TweenSequence([
+      TweenSequenceItem(tween: Tween<double>(begin: 0.0, end: 8.0), weight: 1),
+      TweenSequenceItem(tween: Tween(begin: -8.0, end: 8.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 8.0, end: -8.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: -8.0, end: 8.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 8.0, end: 0.0), weight: 1),
+    ]).animate(CurvedAnimation(parent: _animationController, curve: Curves.linear));
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        widget.onPressed();
+        if(!widget.canScale) _animationController.forward(from: 0);
+      },
+      child: AnimatedBuilder(
+        animation: _animationController,
+        builder: (_, child) {
+          return Transform.translate(
+            offset: Offset(0.0, _animation.value),
+            child: child,
+          );
+        },
+        child: widget.child,
+      ),
+    );
+  }
+
+}
+
