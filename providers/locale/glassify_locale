@@ -1,0 +1,207 @@
+
+import 'dart:ui';
+import 'package:glassify/providers/countries.dart';
+import 'package:glassify/providers/locales/glassify_arabic_locale.dart';
+import 'package:glassify/providers/locales/glassify_english_locale.dart';
+import 'package:intl/number_symbols.dart';
+
+
+mixin AppLocalization {
+  String get appName;
+  String get settingsLabel;
+  String get notificationsLabel;
+  String get likesLabel;
+  String get dislikesLabel;
+  String get chatsLabel;
+
+  String get countryLabel;
+
+  String get designLabel;
+
+  String get buyDesignButton;
+  String get followDesignerLabel;
+  String get followedDesignerLabel;
+
+  String get postsLabel;
+  String get transactionLabel;
+  String get followersLabel;
+
+  String get commentLabel;
+
+  String get priceLabel;
+  String get signInLabel;
+  String get userNameLabel;
+  String get enterUserNameLabel;
+  String get passwordLabel;
+  String get enterPasswordLabel;
+
+  String get customerNameLabel;
+  String get designerNameLabel;
+  String get systemUserLabel;
+
+  String get createAccountLabel;
+
+  String get forgetPasswordLabel;
+
+  String get localSystemLocale;
+
+  String get freePhoneNumberLabel;
+  String get phoneNumberLabel;
+  String get servicePoints;
+  String get customersService;
+
+  String get similarDesigns;
+
+  String get ratingLabel;
+  String get reviewsLabel;
+
+  String get writeComment;
+
+  String get beFirstToComment;
+
+  String get categoryLabel;
+  String get postedAgo;
+  String get daysName;
+  String get monthsName;
+  String get yearName;
+
+  String get reportThisPost;
+
+  String get seeMore;
+
+  String get ago;
+
+  String get describeDesign;
+
+  String get popularDesigns;
+  String get suggestedDesigns;
+
+  String get languageLabel;
+  String get currencyLabel;
+  String get changePasswordLabel;
+  String get deleteAccountLabel;
+
+  String get applicationAttributes;
+  String get applicationVersion;
+  String get applicationRating;
+
+  String get signOutLabel;
+
+  String get editProfileLabel;
+  String get walletsLabel;
+
+  String get joinedIn;
+
+  String get discountLabel;
+
+  String get writeMessage;
+
+  String get searchHere;
+
+  String get mostRecentLabel;
+  String get mostRelevantLabel;
+  String get priceLowToHighLabel;
+  String get priceHighToLowLabel;
+  String get mostPopularLabel;
+
+  String get listingTypeLabel;
+  String get colorLabel;
+  String get originLabel;
+  String get modelLabel;
+
+  String get filterDesignsLabel;
+
+  String get logoLabel;
+  String get decorateLabel;
+  String get graphicLabel;
+
+  String get homeLabel;
+  String get searchLabel;
+  String get cartLabel;
+  String get profileLabel;
+
+  String get dashboardLabel;
+
+  String get totalPriceLabel;
+
+
+  String getCurrencySymbol(String currencySymbol);
+  String getCountryName(String countryCode);
+
+  String getYearName(int years);
+  String getMonthsName(int months);
+
+  String getDaysName(int countDays);
+
+  String getHoursName(int inHours);
+
+  String getMinutesName(int inMinutes);
+
+  String getSecondsName(int inSeconds);
+
+  String getUserNameLabel(String name);
+  String getDesignLabel({bool withPrefix = true, int? counter});
+
+  String formatCurrency(double value, {GlassifyCountry? country});
+  String formatNumber(num value);
+  String formatValue(String value) => value;
+
+  String differenceDateFormat(DateTime dateTime) {
+    final duration = DateTime.now().difference(dateTime);
+    if(duration.inDays > 0) {
+      final countDays = duration.inDays;
+      if((countDays ~/ 365) > 0) {
+        final years = countDays ~/ 365;
+        return getYearName(years);
+      }
+      if((countDays ~/ 30) > 0) {
+        final months = countDays ~/ 30;
+        if(months % 12 == 0) return getYearName(months ~/ 12);
+        return getMonthsName(months);
+      }
+      if(countDays % 30 == 0) getMonthsName(countDays ~/ 30);
+      return getDaysName(countDays);
+    }
+    if(duration.inHours > 0) {
+      return getHoursName(duration.inHours);
+    }
+    if(duration.inMinutes > 0) {
+      return getMinutesName(duration.inMinutes);
+    }
+    return getSecondsName(duration.inSeconds);
+  }
+
+  String formatPostedDate(DateTime dateTime);
+}
+
+
+abstract class GlassifyLocale<Localization extends AppLocalization> extends Locale {
+  final Localization localization;
+  String get localeName;
+
+  late final String _languageCode;
+  @override
+  String get languageCode => _languageCode;
+
+  NumberSymbols get numberSymbols;
+  
+  GlassifyLocale({
+    required String languageCode,
+    required this.localization,
+  }) : super(languageCode) {
+    _languageCode = languageCode;
+  }
+  
+  static List<GlassifyLocale> get supportedLocales => [arabicLocale, englishLocale];
+  
+  static final ArabicLocale arabicLocale = ArabicLocale();
+  static final EnglishLocale englishLocale = EnglishLocale();
+
+
+
+
+}
+
+
+
+
