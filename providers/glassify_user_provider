@@ -1,0 +1,56 @@
+
+import 'package:flutter/cupertino.dart';
+import 'package:glassify/database/models/abstractions/glassify_user.dart';
+import 'package:glassify/database/models/design.dart';
+
+
+
+class UserDataProvider extends ChangeNotifier {
+
+  GlassifyUser? _user;
+  GlassifyUser? get currentUser => _user;
+
+  Future<void> changeUser(GlassifyUser? user) async {
+    _user = user;
+  }
+
+  final userCart = UserCart();
+}
+
+
+
+class UserCart {
+  final List<Design> _designs = [];
+  List<Design> get designsCard => List.of(_designs);
+
+  int get length => _designs.length;
+
+  int indexOf(Design design) {
+    return _designs.indexWhere((design2) => design2.rowId == design.rowId);
+  }
+
+  Design operator [](int index) {
+    return _designs[index];
+  }
+
+  void addToDesignCart(Design design) {
+    _designs.add(design);
+  }
+
+  void removeDesignFromCart(Design design) {
+    _designs.removeWhere((design2) => design2.rowId == design.rowId);
+  }
+
+  bool containsDesignInCart(Design design) {
+    return indexOf(design) > -1;
+  }
+
+  void clear() => _designs.clear();
+
+  double getTotalPrice() {
+    return _designs.fold(0.0, (double pre, next) => pre + next.price);
+  }
+
+}
+
+
