@@ -1,0 +1,19 @@
+
+import 'package:flutter/material.dart';
+
+
+
+class SystemUserMainPage extends StatefulWidget {
+  const SystemUserMainPage({super.key});
+
+  @override
+  State<SystemUserMainPage> createState() => _SystemUserMainPageState();
+}
+
+class _SystemUserMainPageState extends State<SystemUserMainPage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
+  }
+}
