@@ -1,0 +1,349 @@
+//
+//
+// import 'package:flutter/material.dart';
+//
+// ColorScheme get darkColorScheme => ColorScheme(
+//   brightness: Brightness.dark,
+//   primary: Color(0xFFCBCBFF),
+//   onPrimary: Color(0xFF200067),
+//   primaryContainer: Color(0xFF694BBC),
+//   onPrimaryContainer: Color(0xFFE4E4FF),
+//   primaryFixed: Color(0xFFE9DDFF),
+//   onPrimaryFixed: Color(0xFF22005D),
+//   primaryFixedDim: Color(0xFFCBCBFF),
+//   onPrimaryFixedVariant: Color(0xFF512DA3),
+//
+//   secondary: Color(0xFF78AFDB),
+//   onSecondary: Color(0xFF000E24),
+//   secondaryContainer: Color(0xFF4078C2),
+//   onSecondaryContainer: Color(0xFFF0F3FF),
+//   secondaryFixed: Color(0xFFD5E3FF),
+//   onSecondaryFixed: Color(0xFF001B3B),
+//   secondaryFixedDim: Color(0xFFABC8FF),
+//   onSecondaryFixedVariant: Color(0xFF004788),
+//
+//   tertiary: Color(0xFFADEB8C),
+//   onTertiary: Color(0xFF013500),
+//   tertiaryContainer: Color(0xFF2F6E1D),
+//   onTertiaryContainer: Color(0xFFCFFFB0),
+//   tertiaryFixed: Color(0xFFB5F394),
+//   onTertiaryFixed: Color(0xFF072000),
+//   tertiaryFixedDim: Color(0xFF9AD978),
+//   onTertiaryFixedVariant: Color(0xFF1D5202),
+//
+//   error: Color(0xFFFFB4A7),
+//   onError: Color(0xFF311000),
+//   errorContainer: Color(0xFF920400),
+//   onErrorContainer: Color(0xFFFFEDEA),
+//
+//   surface: Color(0xFF141314),
+//   onSurface: Color(0xFFEFEFEF),
+//   surfaceVariant: Color(0xFF201F21),
+//   onSurfaceVariant: Color(0xFFE6E6E6),
+//   surfaceTint: Color(0xFFCBCBFF),
+//
+//   outline: Color(0xFF938F94),
+//   outlineVariant: Color(0xFF605D62),
+//   shadow: Color(0xFF000000),
+//   scrim: Color(0xFF000000),
+//
+//   inverseSurface: Color(0xFFE6E1E3),
+//   onInverseSurface: Color(0xFF1C1B1D),
+//   inversePrimary: Color(0xFF694BBC),
+// );
+//
+// ColorScheme get lightColorScheme => ColorScheme(
+//   brightness: Brightness.light,
+//   primary: Color(0xFF694BBC),
+//   onPrimary: Color(0xFFFFFFFF),
+//   primaryContainer: Color(0xFFCBCBFF),
+//   onPrimaryContainer: Color(0xFF13003A),
+//   primaryFixed: Color(0xFFE9DDFF),
+//   onPrimaryFixed: Color(0xFF22005D),
+//   primaryFixedDim: Color(0xFFCBCBFF),
+//   onPrimaryFixedVariant: Color(0xFF512DA3),
+//
+//   secondary: Color(0xFF5C92DE),
+//   onSecondary: Color(0xFFFFFFFF),
+//   secondaryContainer: Color(0xFFD8E8FF),
+//   onSecondaryContainer: Color(0xFF001B3B),
+//   secondaryFixed: Color(0xFFD5E3FF),
+//   onSecondaryFixed: Color(0xFF001B3B),
+//   secondaryFixedDim: Color(0xFFABC8FF),
+//   onSecondaryFixedVariant: Color(0xFF004788),
+//
+//   tertiary: Color(0xFF4D8433),
+//   onTertiary: Color(0xFFFFFFFF),
+//   tertiaryContainer: Color(0xFFCFFFB0),
+//   onTertiaryContainer: Color(0xFF043800),
+//   tertiaryFixed: Color(0xFFB5F394),
+//   onTertiaryFixed: Color(0xFF072000),
+//   tertiaryFixedDim: Color(0xFF9AD978),
+//   onTertiaryFixedVariant: Color(0xFF1D5202),
+//
+//   error: Color(0xFFBF0800),
+//   onError: Color(0xFFFFFFFF),
+//   errorContainer: Color(0xFFFFDAD4),
+//   onErrorContainer: Color(0xFF400100),
+//
+//   surface: Color(0xFFFFFFFF),
+//   onSurface: Color(0xFF141314),
+//   surfaceVariant: Color(0xFFECE7EB),
+//   onSurfaceVariant: Color(0xFF1C1B1E),
+//   surfaceTint: Color(0xFF694BBC),
+//
+//   outline: Color(0xFF48464A),
+//   outlineVariant: Color(0xFFAEAFAE),
+//   shadow: Color(0xFF000000),
+//   scrim: Color(0xFF000000),
+//
+//   inverseSurface: Color(0xFF313032),
+//   onInverseSurface: Color(0xFFFDF8FA),
+//   inversePrimary: Color(0xFFE9DDFF),
+// );
+
+
+
+
+// import 'package:flutter/material.dart';
+//
+// ColorScheme get lightColorScheme => ColorScheme(
+//   brightness: Brightness.light,
+//   // primary: Color(0xFF00A8E8),            // أزرق تفاعلي
+//   primary: Color(0xFF0075CC),
+//   onPrimary: Colors.white,
+//   primaryContainer: Color(0xFFD2F4FF),   // أزرق فاتح جداً
+//   onPrimaryContainer: Color(0xFF00344B),
+//
+//   secondary: Color(0xFF4C6EF5),
+//   onSecondary: Colors.white,
+//   secondaryContainer: Color(0xFFDDE5FF),
+//   onSecondaryContainer: Color(0xFF1A2C5B),
+//   secondaryFixed: Color(0xFFDDF1F8),
+//
+//   // tertiary: Color(0xFF10B981),           // أخضر ناعم (للتأكيد أو الإشعارات)
+//   // onTertiary: Colors.white,
+//   // tertiaryContainer: Color(0xFFA7F3D0),
+//   // onTertiaryContainer: Color(0xFF064E3B),
+//
+//   tertiary: Color(0xFF10B981),
+//   onTertiary: Color(0xFF064E3B),
+//   tertiaryContainer: Color(0xFF047857),
+//   onTertiaryContainer: Color(0xFFA7F3D0),
+//
+//   error: Color(0xFFEF4444),
+//   onError: Colors.white,
+//   errorContainer: Color(0xFF8C1D18),
+//   onErrorContainer: Color(0xFFFFDAD6),
+//
+//   onSurface: Color(0xFF1E293B),
+//   onSurfaceVariant: Color(0xFF475569),
+//   surface: Color(0xFFF8F9FA),
+//   surfaceContainerLowest: Colors.white,
+//   surfaceContainerLow: Color(0xFFFAFBFC),
+//   surfaceContainer: Color(0xFFFDFDFE),
+//   surfaceContainerHigh: Color(0xFFC2C4C5),
+//   surfaceContainerHighest: Color(0xFF858889),
+//
+//
+//   outline: Color(0xFF94A3B8),
+//   outlineVariant: Color(0xFFCBD5E1),
+//   shadow: Color(0x33000000),
+//   scrim: Color(0x66000000),
+//
+//   inverseSurface: Color(0xFF1E293B),
+//   onInverseSurface: Color(0xFFF1F5F9),
+//   inversePrimary: Color(0xFF55D5FF),
+//   surfaceTint: Color(0xFF00A8E8),
+// );
+//
+// ColorScheme get darkColorScheme => ColorScheme(
+//   brightness: Brightness.dark,
+//
+//   // primary: Color(0xFF00A8E3),
+//   primary: Color(0xFF0075CC),
+//   onPrimary: Color(0xFFEEF9FD),
+//   primaryContainer: Color(0xFF004C6C),
+//   onPrimaryContainer: Color(0xFFD2F4FF),
+//
+//   // secondary: Color(0xFF9DB4FF),
+//   secondary: Color(0xFF80D4EF),
+//   onSecondary: Color(0xFF1A2C5B),
+//   secondaryContainer: Color(0xFF3E558C),
+//   onSecondaryContainer: Color(0xFFDDE5FF),
+//   secondaryFixed: Color(0xFFDDF1F8),
+//
+//   tertiary: Color(0xFF6EE7B7),
+//   onTertiary: Color(0xFF064E3B),
+//   tertiaryContainer: Color(0xFF047857),
+//   onTertiaryContainer: Color(0xFFA7F3D0),
+//
+//   error: Color(0xFFF87171),
+//   onError: Color(0xFF410001),
+//   errorContainer: Color(0xFF8C1D18),
+//   onErrorContainer: Color(0xFFFFDAD6),
+//
+//   surface: Color(0xFF1E293B),
+//   onSurface: Color(0xFFE2E8F0),
+//   surfaceContainer: Color(0xFF121A26),
+//   onSurfaceVariant: Color(0xFFCBD5E1),
+//   surfaceContainerHighest: Color(0xFF090F18),
+//   surfaceContainerHigh: Color(0xFF121A26),
+//   surfaceContainerLowest: Color(0xFFD5DAE1),
+//   surfaceContainerLow: Color(0xFF7A87A7),
+//
+//   outline: Color(0xFF64748B),
+//   outlineVariant: Color(0xFF475569),
+//   shadow: Color(0x66000000),
+//   scrim: Color(0x99000000),
+//
+//   inverseSurface: Color(0xFFE2E8F0),
+//   onInverseSurface: Color(0xFF1E293B),
+//   inversePrimary: Color(0xFF00A8E8),
+//   surfaceTint: Color(0xFF55D5FF),
+// );
+
+
+import 'package:flutter/material.dart';
+
+ColorScheme get lightColorScheme => ColorScheme(
+  brightness: Brightness.light,
+
+  // Primary
+  primary: Colors.blue.shade700, // Color(0xFF00179B), // Color(0xFF000E5F), // Color(0xFF0548F4),
+  onPrimary: Color(0xFFFFFFFF),
+  primaryContainer: Color(0xFFD2F4FF), // Color(0xFFDFE0FF),
+  onPrimaryContainer: Color(0xFF000E5F),
+
+  primaryFixed: Color(0xFFDFE0FF),
+  onPrimaryFixed: Color(0xFF000E5F),
+  primaryFixedDim: Color(0xFFBBC3FF),
+  onPrimaryFixedVariant: Color(0xFF2338AF),
+
+  // Secondary
+  secondary: Colors.blueAccent.shade400, // Color(0xFF4C6EF5), // Color(0xFF575C81),
+  onSecondary: Color(0xFFFFFFFF),
+  secondaryContainer: Color(0xFFF0EFFF),
+  onSecondaryContainer: Color(0xFF13193A),
+
+  secondaryFixed: Color(0xFFDFE0FF),
+  onSecondaryFixed: Color(0xFF13193A),
+  secondaryFixedDim: Color(0xFFBFC4EE),
+  onSecondaryFixedVariant: Color(0xFF3F4468),
+
+  // Tertiary
+  tertiary: Color(0xFF10B981), // Color(0xFF3A4279),
+  onTertiary: Color(0xFFFFFFFF),
+  tertiaryContainer: Color(0xFFBBC3FF),
+  onTertiaryContainer: Color(0xFF0C154B),
+
+  tertiaryFixed: Color(0xFFDFE0FF),
+  onTertiaryFixed: Color(0xFF0C154B),
+  tertiaryFixedDim: Color(0xFFBBC3FF),
+  onTertiaryFixedVariant: Color(0xFF10B981), // Color(0xFF3A4279),
+
+  // Error
+  error: Color(0xFFBA1A1A),
+  onError: Color(0xFFFFFFFF),
+  errorContainer: Color(0xFFFFDAD6),
+  onErrorContainer: Color(0xFF410002),
+
+  // Surface
+  surface: Color(0xFFF8F7FA),
+  onSurface: Color(0xFF1B1B21),
+  surfaceContainer: Color(0xFFFDFDFE), // Color(0xFFEFEDF4),
+  onSurfaceVariant: Color(0xFF46464F),
+
+  surfaceContainerLowest: Color(0xFFFFFFFF),
+  surfaceContainerLow: Color(0xFFF5F2FA),
+  surfaceContainerHigh: Color(0xFFE9E7EF),
+  surfaceContainerHighest: Color(0xFFE4E1E9),
+
+  surfaceDim: Color(0xFFDBD9E0),
+  surfaceBright: Color(0xFFFBF8FF),
+  inverseSurface: Color(0xFF303036),
+  onInverseSurface: Color(0xFFF2EFF7),
+
+  // Other
+  outline: Color(0xFFC7C5D0), // Color(0xFF767680),
+  outlineVariant: Color(0xFF767680),
+  scrim: Color(0xFF000000),
+
+  surfaceTint: Color(0xFF3F52C7),
+  inversePrimary: Color(0xFFBBC3FF),
+  shadow: Color(0xFF000000),
+);
+
+ColorScheme get darkColorScheme => ColorScheme(
+  brightness: Brightness.dark,
+
+  // Primary
+  primary: Colors.orange.shade700, // Color(0xFFBBC3FF),
+  onPrimary: Colors.white, // Color(0xFF001C95),
+  primaryContainer: Color(0xFF2539B0),
+  onPrimaryContainer: Color(0xFF6EE7B7), // Color(0xFFDFE0FF),
+
+  primaryFixed: Color(0xFF6EE7B7), // Color(0xFFDFE0FF),
+  onPrimaryFixed: Color(0xFF000E5F),
+  primaryFixedDim: Color(0xFFBBC3FF),
+  onPrimaryFixedVariant: Color(0xFF2338AF),
+
+  // Secondary
+  secondary: Color(0xFF9DB4FF), // Color(0xFFBFC4EE),
+  onSecondary: Color(0xFF292E50),
+  secondaryContainer: Color(0xFF3F4468),
+  onSecondaryContainer: Color(0xFF6EE7B7), // Color(0xFFDFE0FF),
+
+  secondaryFixed: Color(0xFF6EE7B7), // Color(0xFFDFE0FF),
+  onSecondaryFixed: Color(0xFF13193A),
+  secondaryFixedDim: Color(0xFF9DB4FF), // Color(0xFFBFC4EE),
+  onSecondaryFixedVariant: Color(0xFF3F4468),
+
+  // Tertiary
+  tertiary: Color(0xFF6EE7B7), // Color(0xFFDFE0FF),
+  onTertiary: Color(0xFF064E3B), //Color(0xFF232C61),
+  tertiaryContainer: Color(0xFF525A92),
+  onTertiaryContainer: Color(0xFFF0EFFF),
+
+  tertiaryFixed: Color(0xFF6EE7B7), // Color(0xFFDFE0FF),
+  onTertiaryFixed: Color(0xFF0C154B),
+  tertiaryFixedDim: Color(0xFFBBC3FF),
+  onTertiaryFixedVariant: Color(0xFF3A4279),
+
+  // Error
+  error: Color(0xFFFFB4AB),
+  onError: Color(0xFF690005),
+  errorContainer: Color(0xFF93000A),
+  onErrorContainer: Color(0xFFFFDAD6),
+
+  // Surface
+  surface: Color(0xFF1E293B), // Color(0xFF131318),
+  onSurface: Color(0xFFF8F7FA),
+  surfaceContainer: Color(0xFF121A26), // Color(0xFF1F1F25),
+  onSurfaceVariant: Color(0xffffffff),
+
+  surfaceContainerLowest: Color(0xFF0D0E13),
+  surfaceContainerLow: Color(0xFF1B1B21),
+  surfaceContainerHigh: Color(0xFF29292F),
+  surfaceContainerHighest: Color(0xFF34343A),
+
+  surfaceDim: Color(0xFF121A26), // Color(0xFF131318),
+  surfaceBright: Color(0xFF39393F),
+  inverseSurface: Color(0xFFE4E1E9),
+  onInverseSurface: Color(0xFF303036),
+
+  // Other
+  outline: Color(0xFF90909A),
+  outlineVariant: Color(0xFF46464F),
+  scrim: Color(0xFF000000),
+
+  surfaceTint: Color(0xFFEBEDFB),
+  inversePrimary: Color(0xFF3F52C7),
+  shadow: Color(0xFF000000),
+
+  // Background
+  // background: Color(0xFF131318),
+  // onBackground: Color(0xFFE4E1E9),
+  // surfaceVariant: Color(0xFFE3E1EC),
+
+);
