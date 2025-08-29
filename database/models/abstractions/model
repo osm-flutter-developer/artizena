@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+
+abstract class ModelAbstraction<T> {
+  final T rowId;
+
+  ModelAbstraction(this.rowId);
+
+  Map<String, dynamic> toMap();
+
+
+}
