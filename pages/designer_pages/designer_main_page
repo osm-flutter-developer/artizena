@@ -1,0 +1,180 @@
+
+import 'package:flutter/material.dart';
+import 'package:glassify/database/models/design.dart';
+import 'package:glassify/pages/designer_pages/designer_accounts_page.dart';
+import 'package:glassify/pages/designer_pages/designer_chats_page.dart';
+import 'package:glassify/pages/designer_pages/designer_notifications_page.dart';
+import 'package:glassify/pages/designer_pages/designer_profile_page.dart';
+import 'package:glassify/pages/user_login_page.dart';
+import 'package:glassify/providers/app_data_provider.dart';
+import 'package:glassify/providers/glassify_user_data_provider.dart';
+import 'package:glassify/widgets/customer_card_design.dart';
+import 'package:glassify/widgets/designer_card_design.dart';
+import 'package:provider/provider.dart';
+
+
+
+class DesignerMainPage extends StatefulWidget {
+  const DesignerMainPage({super.key});
+
+  @override
+  State<DesignerMainPage> createState() => _DesignerMainPageState();
+}
+
+class _DesignerMainPageState extends State<DesignerMainPage> {
+  int _currentIndex = 0;
+
+  List<Widget> get _screens => [
+    DesignerHomePage(),
+    DesignerChatsPage(),
+    DesignerNotificationsPage(),
+    DesignerAccountsPage(),
+    DesignerProfilePage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final localization = context.read<AppDataProvider>().localization;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (result, value) {
+        Navigator.pushReplacement(context, CardSlideRoute(builder: (_) =>UserLoginPage(user: null)));
+      },
+      child: Scaffold(
+        body: _screens[_currentIndex],
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: _currentIndex,
+          animationDuration: const Duration(milliseconds: 400),
+          onDestinationSelected: _onTapBarItem,
+          destinations: [
+            NavigationDestination(
+              icon: Icon(Icons.picture_in_picture_rounded, size: _currentIndex == 0 ? 25 : 25),
+              label: localization.getDesignLabel(withPrefix: false, counter: 8).split(' ').last,
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.message_rounded, size: _currentIndex == 1 ? 25 : 25),
+              label: localization.chatsLabel,
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.notifications_rounded, size: _currentIndex == 2 ? 25 : 25),
+              label: localization.notificationsLabel,
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.dashboard_rounded, size: _currentIndex == 3 ? 25 : 25),
+              label: localization.dashboardLabel,
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.account_circle_rounded, size: _currentIndex == 4 ? 25 : 25),
+              label: localization.profileLabel,
+            ),
+          ],
+          surfaceTintColor: Colors.transparent,
+          height: 55,
+        ),
+      ),
+    );
+  }
+
+  void _onTapBarItem(int index) {
+    setState(() => _currentIndex = index);
+  }
+
+}
+
+
+class DesignerHomePage extends StatefulWidget {
+  const DesignerHomePage({super.key});
+
+  @override
+  State<DesignerHomePage> createState() => _DesignerHomePageState();
+
+}
+
+class _DesignerHomePageState extends State<DesignerHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    final provider = context.read<AppDataProvider>();
+    final localization = provider.localization;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(localization.appName),
+        toolbarHeight: 50,
+        actions: [
+          InkWell(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            child: Tooltip(
+              message: localization.designLabel,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                child: Icon(Icons.add_rounded, size: 28),
+              ),
+            ),
+            onTap: () {
+              // Navigator.push(context, CardDownRoute(builder: (_) => CustomerNotificationsPage()));
+            },
+          ),
+          const SizedBox(width: 10),
+          InkWell(
+            // splashColor: colors.onPrimary.withValues(alpha: 0.40),
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            child: Tooltip(
+              message: localization.notificationsLabel,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                child: Icon(Icons.search_sharp, size: 28),
+              ),
+            ),
+            onTap: () {
+              // Navigator.push(context, CardDownRoute(builder: (_) => CustomerNotificationsPage()));
+            },
+          ),
+          const SizedBox(width: 15),
+        ],
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 5.0),
+        itemCount: 20,
+        itemBuilder: (_, mainIndex) {
+          return Align(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: LayoutBuilder(
+                builder: (_, con) {
+                  const spacing = 25.0, defaultWidth = 180.0;
+                  final width = con.maxWidth >= 590 ? defaultWidth : (con.maxWidth - spacing) / 2;
+                  return Wrap(
+                    alignment: WrapAlignment.start,
+                    spacing: spacing,
+                    runSpacing: 15,
+                    children: List.generate(12, (index) {
+                      final design = Design(
+                        rowId: 'glassify-${index + 3}-glassify',
+                        title: '${localization.categoryLabel} ${index + 2}',
+                        description: '${localization.describeDesign} ${localization.categoryLabel} ${index + 2}',
+                        date: DateTime(2025, 7, (index % 31) + 1),
+                        designerId: context.read<UserDataProvider>().currentUser?.rowId ?? '23423',
+                        imagePath: '', otherImagesPaths: {}, transactions: {},
+                        likers: {}, dislikers: {}, comments: {},
+                        price: index * 20, currency: provider.country!.currencySymbol,
+                      );
+                      return SizedBox(
+                        width: width,
+                        height: 300,
+                        child: DesignerCardDesign(design: design),
+                      );
+                    }),
+                  );
+                },
+              ),
+            ),
+          );
+        },
+        separatorBuilder: (_, index) {
+          return const SizedBox(height: 10);
+        },
+      ),
+    );
+  }
+
+}
+
